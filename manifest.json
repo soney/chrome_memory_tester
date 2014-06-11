@@ -1,0 +1,29 @@
+{
+	"manifest_version": 2,
+
+	"name": "Memory Tester",
+	"description": "This extension helps test memory allocation.",
+	"version": "0.1.1",
+	"background": {
+		"scripts": ["background.js"]
+	},
+	"icons": { "16": "icon_16.png",
+	           "32": "icon_32.png",
+	          "128": "icon_128.png" },
+	"content_scripts": [
+		{
+			"matches": ["*://*/*", "file://*/*", "http://localhost:8000/test/unit_tests/unit_tests.ejs.html*",
+				"http://localhost:8000/test/performance_tests.ejs.html*"],
+			"js": ["content_script.js"],
+			"run_at": "document_start"
+		}
+	],
+
+	"permissions": [
+		"tabs",
+		"*://*/*",
+		"http://localhost:8000/test/unit_tests/unit_tests.ejs.html*",
+		"http://localhost:8000/test/performance_tests.ejs.html",
+		"debugger"
+	]
+}
